@@ -15,6 +15,7 @@ class _HomeScreenState extends State<HomeScreen> {
     import material;
 
     widget Root = Scaffold(
+      appBar: AppBar(title: Text(text: 'RFW Gallery')),
       body: Body(),
     );
 
