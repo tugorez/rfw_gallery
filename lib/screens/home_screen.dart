@@ -1,22 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:rfw/rfw.dart';
-import 'package:rfw_gallery/infra/runtime.dart';
+import 'package:rfw_gallery/infra/rfw_screen.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
   static const _mainLibrary = '''
     import core.widgets; 
     import material;
     import rfw_gallery.rfw;
     import rfw_gallery.local;
 
-    widget Root = RfwGalleryScreen(
+    widget Main = RfwGalleryScreen(
       child: Column(
         children: [
           SectionTitle(text: 'Categories'),
@@ -29,7 +23,6 @@ class _HomeScreenState extends State<HomeScreen> {
       text: args.text,
       style: 'headlineMedium',
     );
-
 
     widget MaterialCategoryCard = ExpansionTile(
       title: Padding(
@@ -53,15 +46,8 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   ''';
 
-  final _data = DynamicContent();
-  final _runtime = createRuntime(_mainLibrary);
-
   @override
   Widget build(BuildContext context) {
-    return RemoteWidget(
-      runtime: _runtime,
-      data: _data,
-      widget: const FullyQualifiedWidgetName(mainLibraryName, 'Root'),
-    );
+    return const RfwScreen(mainLibrary: _mainLibrary);
   }
 }
