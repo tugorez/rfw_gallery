@@ -13,14 +13,43 @@ class _HomeScreenState extends State<HomeScreen> {
   static const _mainLibrary = '''
     import core.widgets; 
     import material;
+    import rfw_gallery.rfw;
+    import rfw_gallery.local;
 
-    widget Root = Scaffold(
-      appBar: AppBar(title: Text(text: 'RFW Gallery')),
-      body: Body(),
+    widget Root = RfwGalleryScreen(
+      child: Column(
+        children: [
+          SectionTitle(text: 'Categories'),
+          MaterialCategoryCard(),
+        ],
+      ),
     );
 
-    widget Body = Center(
-      child: Text(text: 'Hello world!'),
+    widget SectionTitle = ThemedText(
+      text: args.text,
+      style: 'headlineMedium',
+    );
+
+
+    widget MaterialCategoryCard = ExpansionTile(
+      title: Padding(
+        child: Text(text: 'MATERIAL'),
+      ),
+      children: [ 
+        DemoTile(
+          title: 'App bar',
+          description: 
+            'Displays information and actions relating to the current screen',
+          screen: 'AppBarScreen',
+        ),
+      ],
+    );
+
+    widget DemoTile = ListTile(
+      title: Text(text: args.title),
+      subtitle: Text(text: args.description),
+      leading: Icon(icon: 0xE047, fontFamily: "MaterialIcons"),
+      onTap: event "goTo" {screen: args.screen},
     );
   ''';
 
