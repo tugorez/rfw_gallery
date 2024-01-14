@@ -14,7 +14,7 @@ final WidgetLibrary rfwGalleryRfwLibrary = parseLibraryFile(
   import rfw_gallery.local;
 
   widget RfwGalleryScreen = Scaffold(
-    appBar: RfwGalleryAppBar(),
+    appBar: RfwGalleryAppBar(title: args.title),
     body: Padding(
       padding: [40, 20],
       child: args.child,
@@ -22,7 +22,7 @@ final WidgetLibrary rfwGalleryRfwLibrary = parseLibraryFile(
   );
 
   widget RfwGalleryAppBar = AppBar(
-    title: Text(text: 'RFW Gallery'),
+    title: Text(text: args.title),
   );
   ''',
 );

@@ -23,6 +23,12 @@ class _RfwScreenState extends State<RfwScreen> {
       runtime: _runtime,
       data: DynamicContent(),
       widget: const FullyQualifiedWidgetName(mainLibraryName, 'Main'),
+      onEvent: (String name, DynamicMap arguments) {
+        if (name != 'goToScreen') return;
+
+        final String screen = arguments['screen'] as String;
+        Navigator.pushNamed(context, screen);
+      },
     );
   }
 }
