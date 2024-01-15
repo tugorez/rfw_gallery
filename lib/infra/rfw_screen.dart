@@ -1,28 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:rfw/rfw.dart';
 import 'package:rfw_gallery/infra/runtime.dart';
+export 'package:rfw/rfw.dart' show DynamicContent;
 
 class RfwScreen extends StatefulWidget {
-  final String _mainLibrary;
+  final String mainLibrary;
+  final DynamicContent data;
 
   const RfwScreen({
     super.key,
-    required String mainLibrary,
-  }) : _mainLibrary = mainLibrary;
+    required this.mainLibrary,
+    required this.data,
+  });
 
   @override
   State<RfwScreen> createState() => _RfwScreenState();
 }
 
 class _RfwScreenState extends State<RfwScreen> {
-  late final _data = DynamicContent()..update('icon', _icons);
-  late final _runtime = createRuntime(widget._mainLibrary);
+  late final _runtime = createRuntime(widget.mainLibrary);
 
   @override
   Widget build(BuildContext context) {
     return RemoteWidget(
       runtime: _runtime,
-      data: _data,
+      data: widget.data,
       widget: const FullyQualifiedWidgetName(mainLibraryName, 'Main'),
       onEvent: (String name, DynamicMap arguments) {
         if (name != 'goToScreen') return;
@@ -32,11 +34,4 @@ class _RfwScreenState extends State<RfwScreen> {
       },
     );
   }
-
-  static final DynamicMap _icons = <String, Object?>{
-    'web_asset': <String, Object?>{
-      'codePoint': Icons.web_asset.codePoint,
-      'fontFamily': Icons.web_asset.fontFamily,
-    },
-  };
 }

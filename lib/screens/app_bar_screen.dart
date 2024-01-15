@@ -20,6 +20,9 @@ class AppBarScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const RfwScreen(mainLibrary: _mainLibrary);
+    return RfwScreen(
+      data: DynamicContent(),
+      mainLibrary: _mainLibrary,
+    );
   }
 }

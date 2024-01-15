@@ -12,8 +12,8 @@ class App extends StatelessWidget {
       theme: theme,
       darkTheme: darkTheme,
       routes: {
-        '/': (context) => const HomeScreen(),
-        '/AppBar': (context) => const AppBarScreen(),
+        '/': (context) => HomeScreen(),
+        '/AppBar': (context) => AppBarScreen(),
       },
     );
   }
