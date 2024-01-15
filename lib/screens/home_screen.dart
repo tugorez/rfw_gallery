@@ -93,7 +93,14 @@ class HomeScreen extends StatelessWidget {
     _Category(
       name: 'ADVANCED',
       icon: Icons.flutter_dash,
-      examples: [],
+      examples: [
+        _Example(
+          title: 'Implicit Animations',
+          description: 'Shows the RFW available implicit animations',
+          icon: Icons.circle_sharp,
+          screen: '/ImplicitAnimations',
+        ),
+      ],
     ),
   ];
 }

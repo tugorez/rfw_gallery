@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:rfw_gallery/screens/home_screen.dart';
 import 'package:rfw_gallery/screens/app_bar_screen.dart';
+import 'package:rfw_gallery/screens/implicit_animations_screen.dart';
+import 'package:rfw_gallery/screens/home_screen.dart';
 import 'package:rfw_gallery/theme.dart';
 
 class App extends StatelessWidget {
@@ -13,7 +14,8 @@ class App extends StatelessWidget {
       darkTheme: darkTheme,
       routes: {
         '/': (context) => HomeScreen(),
-        '/AppBar': (context) => AppBarScreen(),
+        '/AppBar': (context) => const AppBarScreen(),
+        '/ImplicitAnimations': (context) => const ImplicitAnimationsScreen(),
       },
     );
   }
