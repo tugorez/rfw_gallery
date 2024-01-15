@@ -40,7 +40,10 @@ class HomeScreen extends StatelessWidget {
     widget DemoTile = ListTile(
       title: Text(text: args.title),
       subtitle: Text(text: args.description),
-      leading: Icon(icon: 0xE047, fontFamily: "MaterialIcons"),
+      leading: Icon(
+        icon: data.icon.web_asset.codePoint, 
+        fontFamily: data.icon.web_asset.fontFamily,
+      ),
       onTap: event "goToScreen" {screen: args.screen},
     );
   ''';

@@ -15,13 +15,14 @@ class RfwScreen extends StatefulWidget {
 }
 
 class _RfwScreenState extends State<RfwScreen> {
+  late final _data = DynamicContent()..update('icon', _icons);
   late final _runtime = createRuntime(widget._mainLibrary);
 
   @override
   Widget build(BuildContext context) {
     return RemoteWidget(
       runtime: _runtime,
-      data: DynamicContent(),
+      data: _data,
       widget: const FullyQualifiedWidgetName(mainLibraryName, 'Main'),
       onEvent: (String name, DynamicMap arguments) {
         if (name != 'goToScreen') return;
@@ -31,4 +32,11 @@ class _RfwScreenState extends State<RfwScreen> {
       },
     );
   }
+
+  static final DynamicMap _icons = <String, Object?>{
+    'web_asset': <String, Object?>{
+      'codePoint': Icons.web_asset.codePoint,
+      'fontFamily': Icons.web_asset.fontFamily,
+    },
+  };
 }
