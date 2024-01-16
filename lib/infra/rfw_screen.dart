@@ -22,6 +22,11 @@ class _RfwScreenState extends State<RfwScreen> {
 
   @override
   Widget build(BuildContext context) {
+    widget.data.update(
+      'screenSize',
+      MediaQuery.of(context).size.width < 1024 ? 'small' : 'big',
+    );
+
     return RemoteWidget(
       runtime: _runtime,
       data: widget.data,
